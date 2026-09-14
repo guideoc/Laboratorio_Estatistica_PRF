@@ -3303,26 +3303,28 @@ else:
 
 
     # --------------------------------------------------------
-# CLASSIFICAÇÃO DIDÁTICA DA INTENSIDADE DA CORRELAÇÃO
-#
-# Utilizamos o mesmo critério em todo o Módulo 5
-# para evitar interpretações diferentes do mesmo valor.
-# --------------------------------------------------------
+    # CLASSIFICAÇÃO DIDÁTICA DA INTENSIDADE DA CORRELAÇÃO
+    #
+    # Utilizamos o mesmo critério em todo o Módulo 5
+    # para evitar interpretações diferentes do mesmo valor.
+    # --------------------------------------------------------
 
-if correlacao_absoluta < 0.20:
-    intensidade = "muito fraca"
+    correlacao_absoluta = abs(valor_correlacao)
 
-elif correlacao_absoluta < 0.40:
-    intensidade = "fraca"
+    if correlacao_absoluta < 0.20:
+        intensidade = "muito fraca"
 
-elif correlacao_absoluta < 0.60:
-    intensidade = "moderada"
+    elif correlacao_absoluta < 0.40:
+        intensidade = "fraca"
 
-elif correlacao_absoluta < 0.80:
-    intensidade = "forte"
+    elif correlacao_absoluta < 0.60:
+        intensidade = "moderada"
 
-else:
-    intensidade = "muito forte"
+    elif correlacao_absoluta < 0.80:
+        intensidade = "forte"
+
+    else:
+        intensidade = "muito forte"
 
 
     # --------------------------------------------------------
@@ -3355,6 +3357,14 @@ else:
         f"**{variavel_x}** e **{variavel_y}**."
     )
 
+    st.warning(
+        "Correlação não implica causalidade. "
+        "A existência de associação entre duas variáveis "
+        "não permite concluir, por si só, que alterações "
+        "em uma variável sejam a causa das alterações "
+        "observadas na outra."
+    )
+
 
     # --------------------------------------------------------
     # ALERTA IMPORTANTE
@@ -3373,7 +3383,7 @@ else:
         "observadas na outra."
     )
 
-        # ========================================================
+    # ========================================================
     # MÓDULO 5.4
     # REGRESSÃO LINEAR SIMPLES
     # ========================================================
