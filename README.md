@@ -474,19 +474,19 @@ O Módulo 3 utiliza simulações de Monte Carlo para demonstrar dois conceitos f
 
 ## 15.1 Lei dos Grandes Números
 
-Foi simulada uma sequência de lançamentos de um dado justo de seis faces.
+Por padrão, a simulação utiliza os dados da PRF 2025 a fim de ilustrar a estabilização da média a longo prazo. Para uma ilustração pedagógica do fenômeno, também foi simulada uma sequência de lançamentos de um dado justo de seis faces.
 
-A média teórica é:
+#A média teórica é:
 
-```text
-3,5
-```
+#```text
+#3,5
+#```
 
-À medida que a quantidade de lançamentos aumenta, a média observada tende a se aproximar da média teórica.
+À medida que a quantidade de dados analisados aumenta, a média observada tende a se estabilizar dentro do que se "espera", e se torna uma linha reta.
 
 A aplicação apresenta:
 
-- quantidade de lançamentos controlável;
+- quantidade de dados analisados, controlável;
 - média observada;
 - média teórica;
 - diferença absoluta;
@@ -774,6 +774,8 @@ Entre as pessoas classificadas como feridas, aproximadamente:
 ```
 
 Esses valores são totais observados na base e não representam, isoladamente, taxas de risco.
+
+Ainda, cabe destacar que a maior parte dos acidentes de trânsito não são fatais (isto é, não resultam em morte).
 
 ---
 
