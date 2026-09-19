@@ -8,7 +8,7 @@
 
 Este projeto foi desenvolvido como um Laboratório de Estatística Interativa utilizando Python e dados públicos reais.
 
-O conjunto de dados escolhido contém registros de acidentes ocorridos em rodovias federais brasileiras durante o ano de 2025, disponibilizados pela Polícia Rodoviária Federal (PRF).
+O conjunto de dados escolhido contém registros de acidentes ocorridos em rodovias federais brasileiras durante o ano de 2025, disponibilizados pela Polícia Rodoviária Federal (PRF). A escolha foi feita em virtude da ampla quantidade de dados e variáveis à disposição, o que permite uma análise ampla na estatística.
 
 O projeto busca aplicar, de forma prática, conceitos de Estatística Descritiva, Probabilidade, Simulação, Distribuições de Probabilidade, Correlação e Regressão Linear.
 
@@ -229,7 +229,15 @@ A média aritmética é calculada por:
 média = soma dos valores / número de valores
 ```
 
+No Python, temos:
+
+```text
+média = soma / len(dados)
+```
+
 A implementação própria percorre os valores e realiza o cálculo sem utilizar uma função estatística pronta.
+
+
 
 ---
 
@@ -241,6 +249,13 @@ Quando o número de elementos é ímpar, utiliza-se o elemento central.
 
 Quando o número de elementos é par, calcula-se a média dos dois elementos centrais.
 
+Assim, calcula-se
+
+```text
+    n = len(valores)
+    meio = n // 2
+```
+
 ---
 
 ## 7.3 Moda
@@ -251,16 +266,46 @@ A implementação permite a existência de múltiplas modas.
 
 Quando todos os valores apresentam a mesma frequência unitária, o conjunto é considerado amodal pela regra adotada no projeto.
 
+Calcula-se, então:
+
+```text
+    frequencias = {}
+
+    for valor in dados:
+        if valor in frequencias:
+            frequencias[valor] += 1
+        else:
+            frequencias[valor] = 1
+
+    maior_frequencia = 0
+
+    for frequencia in frequencias.values():
+        if frequencia > maior_frequencia:
+            maior_frequencia = frequencia
+
+    # Todos aparecem com a mesma frequência.
+    if maior_frequencia == 1:
+        return []
+
+    modas = []
+
+    for valor, frequencia in frequencias.items():
+        if frequencia == maior_frequencia:
+            modas.append(valor)
+
+    return sorted(modas)
+```
+
 ---
 
 ## 7.4 Variância e desvio padrão
 
 Foram implementadas separadamente:
 
-- variância populacional;
-- variância amostral;
-- desvio padrão populacional;
-- desvio padrão amostral.
+- variância populacional (σ² = Σ(x - μ)² / N);
+- variância amostral (s² = Σ(x - x̄)² / (n - 1));
+- desvio padrão populacional (σ = √σ²);
+- desvio padrão amostral (s = √s²).
 
 Na variância populacional é utilizado o divisor:
 
@@ -468,6 +513,8 @@ Nos primeiros lançamentos a média apresenta maiores oscilações.
 À medida que a quantidade de observações cresce, a média acumulada tende a se aproximar do valor teórico.
 
 Esse comportamento ilustra a Lei dos Grandes Números.
+
+Posteriormente, o mesmo experimento foi aplicado diante dos dados obtidos pela PRF. Enquanto o comportamento observado difere, em certos aspectos, do "ideal" da Lei dos Grandes Números, visto que não há exatamente uma média teórica para esses casos, observa-se que os números tendem a se estabilizar a partir de um certo ponto, tal como a Lei propõe.
 
 ---
 
